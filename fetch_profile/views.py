@@ -11,19 +11,20 @@ def getProfile(request):
         psn_id = request.GET['psn_id']
     fetch = fetchPSNProfile(psn_id)
 
-    level = fetch.getLevel()
 
-    trophy_num = fetch.getTrophy()['trophy_num']
-    bronze_trophy = fetch.getTrophy()['bronze_trophy']
-    silver_trophy = fetch.getTrophy()['silver_trophy']
-    gold_trophy = fetch.getTrophy()['gold_trophy']
-    platinum_trophy = fetch.getTrophy()['platinum_trophy']
-
-    avatar_url = fetch.getAvatarUrl()
-
-    last_played = fetch.getLastPlayed()
 
     if fetch.isExist():
+        level = fetch.getLevel()
+
+        trophy_num = fetch.getTrophy()['trophy_num']
+        bronze_trophy = fetch.getTrophy()['bronze_trophy']
+        silver_trophy = fetch.getTrophy()['silver_trophy']
+        gold_trophy = fetch.getTrophy()['gold_trophy']
+        platinum_trophy = fetch.getTrophy()['platinum_trophy']
+
+        avatar_url = fetch.getAvatarUrl()
+
+        last_played = fetch.getLastPlayed()
         return render(request, 'result.html', {'psn_id': psn_id,
                                                'level': level,
                                                'trophy_num': trophy_num,
